@@ -4,6 +4,8 @@ import Link from "next/link";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
+// grid-cols-5 — keep this comment so Tailwind includes the class
+
 
 const inter = Inter({ variable: "--font-inter", subsets: ["latin"], display: "swap" });
 
@@ -52,8 +54,9 @@ function SiteHeader() {
           <Link href="/reviews" className="hover:text-blue-600 transition-colors">Reviews</Link>
           <Link href="/compare" className="hover:text-blue-600 transition-colors">Compare</Link>
           <Link href="/best-vpn-for" className="hover:text-blue-600 transition-colors hidden sm:inline">Best VPN For</Link>
-          <Link href="/guides" className="hover:text-blue-600 transition-colors hidden md:inline">Guides</Link>
-          <Link href="/blog" className="hover:text-blue-600 transition-colors hidden lg:inline">Blog</Link>
+          <Link href="/vpn-for" className="hover:text-blue-600 transition-colors hidden md:inline">By Country</Link>
+          <Link href="/guides" className="hover:text-blue-600 transition-colors hidden lg:inline">Guides</Link>
+          <Link href="/blog" className="hover:text-blue-600 transition-colors hidden xl:inline">Blog</Link>
           <Link
             href="/reviews/nordvpn"
             className="bg-blue-600 text-white px-4 py-1.5 rounded-full text-sm font-semibold hover:bg-blue-700 transition-colors hidden sm:inline"
@@ -70,7 +73,7 @@ function SiteFooter() {
   return (
     <footer className="border-t border-slate-200 bg-slate-50 mt-16">
       <div className="mx-auto max-w-6xl px-4 py-10 text-sm text-slate-600">
-        <div className="grid gap-8 md:grid-cols-4">
+        <div className="grid gap-8 md:grid-cols-5">
           <div>
             <div className="font-bold text-slate-900 mb-3">🛡️ VPN Adviser</div>
             <p className="leading-relaxed">
@@ -96,6 +99,16 @@ function SiteFooter() {
               <li><Link href="/best-vpn-for/gaming" className="hover:text-blue-600">Gaming</Link></li>
               <li><Link href="/best-vpn-for/china" className="hover:text-blue-600">China</Link></li>
               <li><Link href="/best-vpn-for/free" className="hover:text-blue-600">Free VPN</Link></li>
+            </ul>
+          </div>
+          <div>
+            <div className="font-semibold text-slate-900 mb-3">VPN By Country</div>
+            <ul className="space-y-2">
+              <li><Link href="/vpn-for/united-states" className="hover:text-blue-600">USA</Link></li>
+              <li><Link href="/vpn-for/united-kingdom" className="hover:text-blue-600">UK</Link></li>
+              <li><Link href="/vpn-for/germany" className="hover:text-blue-600">Germany</Link></li>
+              <li><Link href="/vpn-for/china" className="hover:text-blue-600">China</Link></li>
+              <li><Link href="/vpn-for" className="hover:text-blue-600">All Countries →</Link></li>
             </ul>
           </div>
           <div>

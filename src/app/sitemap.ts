@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { vpns } from "@/data/vpns";
 import { useCases } from "@/data/usecases";
+import { countries } from "@/data/countries";
 import { getAllPosts } from "@/data/posts";
 
 const BASE = "https://vpnadviser.com";
@@ -11,6 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/reviews`, priority: 0.9 },
     { url: `${BASE}/compare`, priority: 0.8 },
     { url: `${BASE}/best-vpn-for`, priority: 0.8 },
+    { url: `${BASE}/vpn-for`, priority: 0.9 },
     { url: `${BASE}/blog`, priority: 0.7 },
     { url: `${BASE}/guides`, priority: 0.7 },
     { url: `${BASE}/about`, priority: 0.4 },
@@ -43,6 +45,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
+  const countryPages = countries.map((c) => ({
+    url: `${BASE}/vpn-for/${c.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.85,
+  }));
+
   const blogPages = getAllPosts().map((p) => ({
     url: `${BASE}/blog/${p.slug}`,
     lastModified: new Date(p.date),
@@ -50,5 +59,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticPages, ...reviewPages, ...comparePages, ...useCasePages, ...blogPages];
+  return [...staticPages, ...reviewPages, ...comparePages, ...useCasePages, ...countryPages, ...blogPages];
 }
