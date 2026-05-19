@@ -29,7 +29,7 @@ export const vpns: VPN[] = [
     logo: "/logos/nordvpn.svg",
     rating: 4.9,
     price: "$3.39/mo",
-    affiliateUrl: "https://nordvpn.com",
+    affiliateUrl: "https://go.nordvpn.net/aff_c?offer_id=15&aff_id=147496&url_id=902",
     badge: "Best Overall",
     pros: [
       "Consistently fast speeds (WireGuard/NordLynx)",
