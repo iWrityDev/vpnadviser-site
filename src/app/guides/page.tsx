@@ -70,7 +70,7 @@ export default function GuidesPage() {
             </span>
             <h2 className="font-bold text-base leading-snug mb-2">{g.title}</h2>
             <p className="text-sm text-slate-600 leading-relaxed">{g.description}</p>
-            <div className="mt-4 text-xs text-blue-500 font-medium">Coming soon</div>
+            <Link href={`/guides/${g.slug}`} className="mt-4 inline-block text-xs text-blue-600 font-medium hover:underline">Read guide →</Link>
           </div>
         ))}
       </div>
