@@ -66,6 +66,7 @@ function SiteHeader() {
           <Link href="/best-vpn-for" className="hover:text-blue-600 transition-colors hidden sm:inline">Best VPN For</Link>
           <Link href="/vpn-for" className="hover:text-blue-600 transition-colors hidden md:inline">By Country</Link>
           <Link href="/guides" className="hover:text-blue-600 transition-colors hidden lg:inline">Guides</Link>
+          <Link href="/tools" className="hover:text-blue-600 transition-colors hidden lg:inline">Tools</Link>
           <Link href="/blog" className="hover:text-blue-600 transition-colors hidden xl:inline">Blog</Link>
           <Link
             href="/reviews/nordvpn"
