@@ -25,6 +25,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   };
 }
 
+function parsePriceNumber(price: string): number {
+  const match = price.match(/[\d.]+/);
+  return match ? parseFloat(match[0]) : Infinity;
+}
+
 export default async function ComparePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const [aSlug, bSlug] = slug.split("-vs-");
@@ -41,8 +46,74 @@ export default async function ComparePage({ params }: { params: Promise<{ slug: 
     moneyBack: "Money-Back Guarantee",
   };
 
+  const aPrice = parsePriceNumber(a.price);
+  const bPrice = parsePriceNumber(b.price);
+  const cheaperName = aPrice <= bPrice ? a.name : b.name;
+
+  const aServersNum = parseInt(a.specs.servers.replace(/[^0-9]/g, ""), 10);
+  const bServersNum = parseInt(b.specs.servers.replace(/[^0-9]/g, ""), 10);
+  const moreServersName = aServersNum >= bServersNum ? a.name : b.name;
+
+  const aStreams = a.bestFor.includes("streaming");
+  const bStreams = b.bestFor.includes("streaming");
+  let streamingAnswer: string;
+  if (aStreams && bStreams) {
+    streamingAnswer = `Both ${a.name} and ${b.name} support streaming. ${a.rating >= b.rating ? a.name : b.name} is rated slightly higher overall and is our first recommendation.`;
+  } else if (aStreams) {
+    streamingAnswer = `${a.name} is the stronger streaming choice. It is specifically optimised for platforms like Netflix and Disney+. ${b.name} is not primarily focused on streaming.`;
+  } else if (bStreams) {
+    streamingAnswer = `${b.name} is the stronger streaming choice. It is specifically optimised for platforms like Netflix and Disney+. ${a.name} is not primarily focused on streaming.`;
+  } else {
+    streamingAnswer = `Neither ${a.name} nor ${b.name} is our top recommendation for streaming. Consider NordVPN or ExpressVPN if streaming is your main use case.`;
+  }
+
+  const faqs = [
+    {
+      question: `Which is cheaper, ${a.name} or ${b.name}?`,
+      answer: `${cheaperName} is the cheaper option. ${a.name} is priced at ${a.price} while ${b.name} is priced at ${b.price}. Prices shown are for the best long-term plan.`,
+    },
+    {
+      question: `Which has more servers, ${a.name} or ${b.name}?`,
+      answer: `${moreServersName} has the larger server network. ${a.name} has ${a.specs.servers} servers and ${b.name} has ${b.specs.servers} servers.`,
+    },
+    {
+      question: `Which is better for streaming, ${a.name} or ${b.name}?`,
+      answer: streamingAnswer,
+    },
+    {
+      question: `What is the main difference between ${a.name} and ${b.name}?`,
+      answer: `${a.name} positions itself as "${a.tagline.toLowerCase()}". ${b.name} takes a different focus: "${b.tagline.toLowerCase()}". The right choice depends on which of these priorities matters most to you.`,
+    },
+  ];
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://vpnadviser.com" },
+      { "@type": "ListItem", position: 2, name: "Compare", item: "https://vpnadviser.com/compare" },
+      { "@type": "ListItem", position: 3, name: `${a.name} vs ${b.name}`, item: `https://vpnadviser.com/compare/${slug}` },
+    ],
+  };
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
+      },
+    })),
+  };
+
   return (
     <div className="mx-auto max-w-4xl px-4 py-12">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+
       <div className="text-sm text-slate-500 mb-6">
         <Link href="/" className="hover:text-blue-600">Home</Link>
         {" / "}
@@ -111,7 +182,7 @@ export default async function ComparePage({ params }: { params: Promise<{ slug: 
         </p>
       </div>
 
-      <div className="grid sm:grid-cols-2 gap-4">
+      <div className="grid sm:grid-cols-2 gap-4 mb-12">
         {[a, b].map((vpn) => (
           <Link
             key={vpn.slug}
@@ -121,6 +192,24 @@ export default async function ComparePage({ params }: { params: Promise<{ slug: 
             <div className="font-semibold group-hover:text-blue-600 transition-colors">Read Full {vpn.name} Review →</div>
           </Link>
         ))}
+      </div>
+
+      {/* FAQ Section */}
+      <div className="mb-4">
+        <h2 className="text-xl font-bold mb-4">{a.name} vs {b.name}: Common Questions</h2>
+        <div className="space-y-3">
+          {faqs.map((faq) => (
+            <details key={faq.question} className="border border-slate-200 rounded-xl overflow-hidden group">
+              <summary className="flex items-center justify-between px-5 py-4 font-medium cursor-pointer select-none hover:bg-slate-50 transition-colors list-none">
+                {faq.question}
+                <span className="text-slate-400 text-sm ml-4 shrink-0 group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <div className="px-5 pb-4 text-sm text-slate-700 leading-relaxed border-t border-slate-100">
+                {faq.answer}
+              </div>
+            </details>
+          ))}
+        </div>
       </div>
     </div>
   );

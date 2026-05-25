@@ -32,8 +32,71 @@ export default async function ToolPage({
 
   const others = tools.filter((t) => t.slug !== slug).slice(0, 3);
 
+  const faqs = [
+    {
+      question: `Is ${tool.name} worth it?`,
+      answer: `${tool.name} scores ${tool.rating}/5 in our testing. ${tool.tagline}. For most users looking for ${tool.bestFor[0].replace(/-/g, " ")}, it delivers solid value.`,
+    },
+    {
+      question: `What does ${tool.name} cost?`,
+      answer: `${tool.name} starts at ${tool.price}. Check the provider's site for the latest pricing and any active discounts.`,
+    },
+    {
+      question: `What is ${tool.name} best for?`,
+      answer: `${tool.name} is best for: ${tool.bestFor.map((b) => b.replace(/-/g, " ")).join(", ")}.`,
+    },
+  ];
+
+  const reviewSchema = {
+    "@context": "https://schema.org",
+    "@type": "Review",
+    itemReviewed: {
+      "@type": "SoftwareApplication",
+      name: tool.name,
+      applicationCategory: "SecurityApplication",
+      url: tool.affiliateUrl,
+    },
+    reviewRating: {
+      "@type": "Rating",
+      ratingValue: tool.rating,
+      bestRating: "5",
+      worstRating: "1",
+    },
+    author: { "@type": "Organization", name: "VPN Adviser" },
+    publisher: { "@type": "Organization", name: "VPN Adviser", url: "https://vpnadviser.com" },
+    name: `${tool.name} Review 2026`,
+    reviewBody: tool.description,
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://vpnadviser.com" },
+      { "@type": "ListItem", position: 2, name: "Tools", item: "https://vpnadviser.com/tools" },
+      { "@type": "ListItem", position: 3, name: `${tool.name} Review`, item: `https://vpnadviser.com/tools/${tool.slug}` },
+    ],
+  };
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
+      },
+    })),
+  };
+
   return (
     <div className="mx-auto max-w-4xl px-4 py-12">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+
       {/* Breadcrumb */}
       <div className="text-sm text-slate-500 mb-6">
         <Link href="/" className="hover:text-blue-600">
@@ -125,6 +188,24 @@ export default async function ToolPage({
             >
               {tag.replace(/-/g, " ")}
             </span>
+          ))}
+        </div>
+      </div>
+
+      {/* FAQ Section */}
+      <div className="mb-10">
+        <h2 className="text-xl font-bold mb-4">Frequently Asked Questions</h2>
+        <div className="space-y-3">
+          {faqs.map((faq) => (
+            <details key={faq.question} className="border border-slate-200 rounded-xl overflow-hidden group">
+              <summary className="flex items-center justify-between px-5 py-4 font-medium cursor-pointer select-none hover:bg-slate-50 transition-colors list-none">
+                {faq.question}
+                <span className="text-slate-400 text-sm ml-4 shrink-0 group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <div className="px-5 pb-4 text-sm text-slate-700 leading-relaxed border-t border-slate-100">
+                {faq.answer}
+              </div>
+            </details>
           ))}
         </div>
       </div>

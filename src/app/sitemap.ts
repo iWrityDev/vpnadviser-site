@@ -3,6 +3,7 @@ import { vpns } from "@/data/vpns";
 import { useCases } from "@/data/usecases";
 import { countries } from "@/data/countries";
 import { getAllPosts } from "@/data/posts";
+import { tools } from "@/data/tools";
 
 const BASE = "https://vpnadviser.com";
 
@@ -15,6 +16,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/vpn-for`, priority: 0.9 },
     { url: `${BASE}/blog`, priority: 0.7 },
     { url: `${BASE}/guides`, priority: 0.7 },
+    { url: `${BASE}/tools`, priority: 0.8 },
     { url: `${BASE}/about`, priority: 0.4 },
     { url: `${BASE}/disclosure`, priority: 0.3 },
   ].map((p) => ({ ...p, lastModified: new Date(), changeFrequency: "weekly" as const }));
@@ -59,5 +61,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticPages, ...reviewPages, ...comparePages, ...useCasePages, ...countryPages, ...blogPages];
+  const toolPages = tools.map((t) => ({
+    url: `${BASE}/tools/${t.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.85,
+  }));
+
+  return [...staticPages, ...reviewPages, ...comparePages, ...useCasePages, ...countryPages, ...blogPages, ...toolPages];
 }

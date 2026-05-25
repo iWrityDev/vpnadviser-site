@@ -30,6 +30,19 @@ export const metadata: Metadata = {
   verification: { google: "cpuIiJsWETGLqPF_wfZJIjfRYl5H0mtOFCN4CfE0riI" },
 };
 
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "VPN Adviser",
+  url: "https://vpnadviser.com",
+  description: "Independent VPN reviews, comparisons, and guides",
+  potentialAction: {
+    "@type": "SearchAction",
+    target: "https://vpnadviser.com/blog?q={search_term_string}",
+    "query-input": "required name=search_term_string",
+  },
+};
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${inter.variable} h-full antialiased`}>
@@ -39,6 +52,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           data-domain="vpnadviser.com"
           src="https://analytics.skriuwer.com/js/script.js"
           strategy="afterInteractive"
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
       </head>
       <body className="min-h-full flex flex-col bg-white text-slate-900">

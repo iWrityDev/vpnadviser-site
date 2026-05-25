@@ -24,8 +24,79 @@ export default async function ReviewPage({ params }: { params: Promise<{ slug: s
 
   const others = vpns.filter((v) => v.slug !== slug).slice(0, 3);
 
+  const worksForStreaming = vpn.bestFor.includes("streaming");
+
+  const faqs = [
+    {
+      question: `Is ${vpn.name} safe to use?`,
+      answer: `Yes. ${vpn.name} has a ${vpn.specs.logs} policy${vpn.specs.logs.toLowerCase().includes("audit") ? ", verified by independent auditors" : ""}. Your browsing activity is not stored or shared.`,
+    },
+    {
+      question: `How many devices can I use with ${vpn.name}?`,
+      answer: `${vpn.name} supports ${vpn.specs.devices} simultaneous device connection${vpn.specs.devices === "1" ? "" : "s"} under one account.`,
+    },
+    {
+      question: `Does ${vpn.name} work with Netflix?`,
+      answer: worksForStreaming
+        ? `Yes. ${vpn.name} consistently unblocks Netflix and other streaming platforms. It is one of our recommended picks for streaming.`
+        : `${vpn.name} is not primarily optimised for streaming. We recommend NordVPN or ExpressVPN if Netflix access is your main use case.`,
+    },
+    {
+      question: `What is ${vpn.name}'s money-back guarantee?`,
+      answer: `${vpn.name} offers a ${vpn.specs.moneyBack} money-back guarantee. If you are not satisfied, you can request a full refund within that period.`,
+    },
+  ];
+
+  const reviewSchema = {
+    "@context": "https://schema.org",
+    "@type": "Review",
+    itemReviewed: {
+      "@type": "SoftwareApplication",
+      name: vpn.name,
+      applicationCategory: "SecurityApplication",
+      url: vpn.affiliateUrl,
+    },
+    reviewRating: {
+      "@type": "Rating",
+      ratingValue: vpn.rating,
+      bestRating: "5",
+      worstRating: "1",
+    },
+    author: { "@type": "Organization", name: "VPN Adviser" },
+    publisher: { "@type": "Organization", name: "VPN Adviser", url: "https://vpnadviser.com" },
+    name: `${vpn.name} Review 2026`,
+    reviewBody: vpn.description,
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://vpnadviser.com" },
+      { "@type": "ListItem", position: 2, name: "Reviews", item: "https://vpnadviser.com/reviews" },
+      { "@type": "ListItem", position: 3, name: `${vpn.name} Review`, item: `https://vpnadviser.com/reviews/${vpn.slug}` },
+    ],
+  };
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
+      },
+    })),
+  };
+
   return (
     <div className="mx-auto max-w-4xl px-4 py-12">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+
       {/* Breadcrumb */}
       <div className="text-sm text-slate-500 mb-6">
         <Link href="/" className="hover:text-blue-600">Home</Link>
@@ -123,6 +194,24 @@ export default async function ReviewPage({ params }: { params: Promise<{ slug: s
             <span key={tag} className="bg-slate-100 text-slate-700 text-sm px-3 py-1 rounded-full capitalize">
               {tag.replace("-", " ")}
             </span>
+          ))}
+        </div>
+      </div>
+
+      {/* FAQ Section */}
+      <div className="mb-10">
+        <h2 className="text-xl font-bold mb-4">Frequently Asked Questions</h2>
+        <div className="space-y-3">
+          {faqs.map((faq) => (
+            <details key={faq.question} className="border border-slate-200 rounded-xl overflow-hidden group">
+              <summary className="flex items-center justify-between px-5 py-4 font-medium cursor-pointer select-none hover:bg-slate-50 transition-colors list-none">
+                {faq.question}
+                <span className="text-slate-400 text-sm ml-4 shrink-0 group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <div className="px-5 pb-4 text-sm text-slate-700 leading-relaxed border-t border-slate-100">
+                {faq.answer}
+              </div>
+            </details>
           ))}
         </div>
       </div>

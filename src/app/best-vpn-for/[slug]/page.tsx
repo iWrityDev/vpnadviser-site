@@ -25,8 +25,57 @@ export default async function UseCasePage({ params }: { params: Promise<{ slug: 
   const topVpn = getVPN(uc.topPick);
   const others = vpns.filter((v) => v.slug !== uc.topPick).slice(0, 3);
 
+  const useCaseLabel = slug.replace(/-/g, " ");
+
+  const faqs = topVpn
+    ? [
+        {
+          question: `What is the best VPN for ${useCaseLabel}?`,
+          answer: `${topVpn.name} is our top pick for ${useCaseLabel}. ${topVpn.description.split(".")[0]}.`,
+        },
+        {
+          question: `Is ${topVpn.name} good for ${useCaseLabel}?`,
+          answer: topVpn.description.split(".")[0] + ".",
+        },
+        {
+          question: `How much does ${topVpn.name} cost?`,
+          answer: `${topVpn.name} starts at ${topVpn.price} with a ${topVpn.specs.moneyBack} money-back guarantee.`,
+        },
+      ]
+    : [];
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://vpnadviser.com" },
+      { "@type": "ListItem", position: 2, name: "Best VPN For", item: "https://vpnadviser.com/best-vpn-for" },
+      { "@type": "ListItem", position: 3, name: uc.title, item: `https://vpnadviser.com/best-vpn-for/${uc.slug}` },
+    ],
+  };
+
+  const faqSchema = faqs.length > 0
+    ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: faqs.map((faq) => ({
+          "@type": "Question",
+          name: faq.question,
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: faq.answer,
+          },
+        })),
+      }
+    : null;
+
   return (
     <div className="mx-auto max-w-4xl px-4 py-12">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      {faqSchema && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      )}
+
       <div className="text-sm text-slate-500 mb-6">
         <Link href="/" className="hover:text-blue-600">Home</Link>
         {" / "}
@@ -82,6 +131,26 @@ export default async function UseCasePage({ params }: { params: Promise<{ slug: 
           </Link>
         ))}
       </div>
+
+      {/* FAQ Section */}
+      {faqs.length > 0 && (
+        <div className="mb-12">
+          <h2 className="text-xl font-bold mb-4">Common Questions</h2>
+          <div className="space-y-3">
+            {faqs.map((faq) => (
+              <details key={faq.question} className="border border-slate-200 rounded-xl overflow-hidden group">
+                <summary className="flex items-center justify-between px-5 py-4 font-medium cursor-pointer select-none hover:bg-slate-50 transition-colors list-none">
+                  {faq.question}
+                  <span className="text-slate-400 text-sm ml-4 shrink-0 group-open:rotate-180 transition-transform">▼</span>
+                </summary>
+                <div className="px-5 pb-4 text-sm text-slate-700 leading-relaxed border-t border-slate-100">
+                  {faq.answer}
+                </div>
+              </details>
+            ))}
+          </div>
+        </div>
+      )}
 
       <div className="border-t border-slate-200 pt-8">
         <h2 className="text-xl font-bold mb-4">Explore Other Use Cases</h2>
