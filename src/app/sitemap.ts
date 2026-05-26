@@ -19,6 +19,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/guides`, priority: 0.7 },
     { url: `${BASE}/tools`, priority: 0.8 },
     { url: `${BASE}/deals`, priority: 0.9 },
+    { url: `${BASE}/best-vpn`, priority: 1.0 },
     { url: `${BASE}/about`, priority: 0.4 },
     { url: `${BASE}/disclosure`, priority: 0.3 },
   ].map((p) => ({ ...p, lastModified: new Date(), changeFrequency: "weekly" as const }));

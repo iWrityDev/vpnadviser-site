@@ -78,6 +78,7 @@ function SiteHeader() {
           <span>VPN Adviser</span>
         </Link>
         <nav className="flex items-center gap-5 text-sm font-medium">
+          <Link href="/best-vpn" className="hover:text-blue-600 transition-colors hidden sm:inline">Best VPN</Link>
           <Link href="/reviews" className="hover:text-blue-600 transition-colors">Reviews</Link>
           <Link href="/compare" className="hover:text-blue-600 transition-colors">Compare</Link>
           <Link href="/best-vpn-for" className="hover:text-blue-600 transition-colors hidden sm:inline">Best VPN For</Link>
