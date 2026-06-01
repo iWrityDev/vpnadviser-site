@@ -138,7 +138,7 @@ export const tools: Tool[] = [
     tagline: "Automated data removal from data brokers, by Surfshark",
     rating: 4.5,
     price: "$6.49/mo",
-    affiliateUrl: "https://incogni.com",
+    affiliateUrl: "https://www.kqzyfj.com/click-101760415-15718702",
     category: "Privacy",
     pros: [
       "Affordable pricing, roughly half the cost of DeleteMe",
