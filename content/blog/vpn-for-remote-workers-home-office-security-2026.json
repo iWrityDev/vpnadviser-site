@@ -1,0 +1,15 @@
+{
+    "slug":  "vpn-for-remote-workers-home-office-security-2026",
+    "title":  "VPN for Remote Workers: Home Office Security in 2026",
+    "description":  "Working from home creates security risks your office IT team used to handle. A VPN is one part of the solution. Here is what remote workers actually need to know.",
+    "date":  "2026-06-09",
+    "readTime":  "6 min",
+    "category":  "use-cases",
+    "content":  "\u003ch2\u003eWhy Remote Work and VPNs Go Together\u003c/h2\u003e\u003cp\u003eWhen you work in an office, your traffic passes through a corporate firewall and monitored network. At home, your ISP can see your traffic, your router may have outdated firmware, and any compromised device on your home network is on the same segment as your work laptop. A VPN encrypts your traffic so your ISP cannot log it and routes it through a server your employer or a VPN provider controls.\u003c/p\u003e\u003ch2\u003eCorporate VPN vs Consumer VPN\u003c/h2\u003e\u003cp\u003eIf your employer provides a VPN, use it for work. Corporate VPNs are designed to connect you to internal resources: file servers, intranets, tools that only work on the company network. They are not designed to protect your browsing privacy because your employer can see your traffic on the other end. Consumer VPNs like NordVPN or Mullvad shift that visibility from your ISP to the VPN provider. For personal privacy on personal devices, a consumer VPN makes sense. For accessing company resources, use what your employer provides.\u003c/p\u003e\u003ch2\u003eSplit Tunneling for Remote Workers\u003c/h2\u003e\u003cp\u003eMany VPN clients support split tunneling: routing only specific apps or domains through the VPN while everything else uses your normal connection. This is useful for remote work. You can route your company\u0027s internal tools through the corporate VPN while your personal browsing goes directly to the internet without slowing down due to VPN overhead. Check whether your employer\u0027s VPN client supports this and whether company policy allows it.\u003c/p\u003e\u003ch2\u003eWhat a VPN Does Not Do\u003c/h2\u003e\u003cp\u003eA VPN does not protect against phishing, malware, or weak passwords. It does not encrypt files you store locally. It does not prevent your employer from seeing what you do on company devices. Think of it as one layer in a larger set of practices: strong unique passwords, a password manager, two-factor authentication, and keeping software updated all matter more than which VPN you use.\u003c/p\u003e\u003ch2\u003eRecommended Setup for Home Workers\u003c/h2\u003e\u003cp\u003eUse your employer\u0027s VPN for work applications. Add a consumer VPN on your personal device for personal browsing. Keep your home router firmware updated. Separate your work and personal devices onto different networks if your router supports it. These steps together address the main remote work security risks without requiring significant technical expertise.\u003c/p\u003e",
+    "tags":  [
+                 "remote work",
+                 "home office",
+                 "security",
+                 "corporate vpn"
+             ]
+}
