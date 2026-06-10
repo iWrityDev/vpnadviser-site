@@ -31,6 +31,7 @@ const GUIDE_SLUGS = [
   "vpn-kill-switch-explained",
   "vpn-protocols-explained",
   "free-vs-paid-vpn",
+  "best-vpn-for-linux-2026",
 ];
 
 export async function generateStaticParams() {
