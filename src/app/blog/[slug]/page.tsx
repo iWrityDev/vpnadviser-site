@@ -53,7 +53,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
       <div className="mt-12 bg-blue-50 border border-blue-200 rounded-2xl p-6">
         <div className="font-bold text-blue-900 mb-1">Want expert VPN recommendations?</div>
-        <p className="text-sm text-slate-700 mb-4">We test every major VPN so you don't have to. See our top picks for 2026.</p>
+        <p className="text-sm text-slate-700 mb-4">We compare every major VPN so you don't have to. See our top picks for 2026.</p>
         <Link
           href="/reviews"
           className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-5 py-2 rounded-xl transition-colors text-sm"

@@ -3,9 +3,9 @@ import Link from "next/link";
 import { vpns } from "@/data/vpns";
 
 export const metadata: Metadata = {
-  title: "Best VPN 2026 — Top 10 Tested and Ranked",
+  title: "Best VPN 2026 — Top 10 Compared and Ranked",
   description:
-    "The best VPNs of 2026, tested for speed, privacy, streaming, and value. Independent rankings with no paid placements. Updated May 2026.",
+    "The best VPNs of 2026 compared on performance, privacy, streaming, and value, using published specifications and independent audits. Independent rankings with no paid placements.",
 };
 
 const top10 = vpns.slice(0, 10);
@@ -52,7 +52,7 @@ const faqSchema = {
 const tableOfContents = [
   { id: "top-picks", label: "Top 10 VPNs" },
   { id: "comparison", label: "Head-to-Head Comparison" },
-  { id: "how-we-test", label: "How We Test" },
+  { id: "how-we-test", label: "How We Compare" },
   { id: "faq", label: "FAQ" },
 ];
 
@@ -67,9 +67,9 @@ export default function BestVpnPage() {
           <div className="text-blue-600 text-sm font-semibold uppercase tracking-wide mb-2">Updated May 2026</div>
           <h1 className="text-4xl font-bold mb-4">Best VPN 2026</h1>
           <p className="text-slate-600 text-lg leading-relaxed">
-            We tested 13 VPNs for speed, streaming reliability, privacy, and value. These are
-            the ones that passed. No sponsored rankings — our affiliate links come after the
-            verdict, not before it.
+            We compared 13 VPNs on performance, streaming support, privacy record, and value,
+            using published specifications and independent third-party audits. No sponsored
+            rankings: our affiliate links come after the verdict, not before it.
           </p>
         </div>
 
@@ -174,25 +174,29 @@ export default function BestVpnPage() {
           </table>
         </div>
 
-        {/* How we test */}
+        {/* How we compare */}
         <div id="how-we-test" className="bg-slate-50 border border-slate-200 rounded-2xl p-8 mb-12">
-          <h2 className="text-xl font-bold mb-4">How We Test VPNs</h2>
+          <h2 className="text-xl font-bold mb-4">How We Compare VPNs</h2>
+          <p className="text-sm text-slate-700 mb-4">
+            We are a comparison site, not a testing lab. We do not run our own benchmarks. Every
+            rating below comes from publicly verifiable sources.
+          </p>
           <div className="grid sm:grid-cols-2 gap-6 text-sm text-slate-700 leading-relaxed">
             <div>
-              <div className="font-semibold mb-1">Speed testing</div>
-              <p>We run speed tests from servers in Europe, North America, and Asia-Pacific, measuring download speeds, upload speeds, and latency. Tests run on NordLynx/WireGuard and OpenVPN for comparison.</p>
+              <div className="font-semibold mb-1">Performance</div>
+              <p>We compare supported protocols (WireGuard/NordLynx, OpenVPN, IKEv2), server counts, and country coverage, alongside performance figures published by independent reviewers.</p>
             </div>
             <div>
               <div className="font-semibold mb-1">Streaming</div>
-              <p>We verify unblocking for Netflix US/UK/JP, BBC iPlayer, Hulu, Disney+, and Amazon Prime Video. Tests repeat weekly because platform blocklists change frequently.</p>
+              <p>We record which streaming services each provider documents support for, and note that platform blocklists change frequently, so support can vary over time.</p>
             </div>
             <div>
-              <div className="font-semibold mb-1">Privacy and leaks</div>
-              <p>We run DNS leak tests, WebRTC leak tests, and IPv6 leak tests on every VPN. We review no-logs audit reports from third-party auditors (Deloitte, PwC, Securitum, etc.).</p>
+              <div className="font-semibold mb-1">Privacy record</div>
+              <p>We check jurisdiction, ownership, and privacy policy, and whether no-logs claims have been examined in a published third-party audit (Deloitte, PwC, Securitum, and others) or tested in court.</p>
             </div>
             <div>
               <div className="font-semibold mb-1">Apps and usability</div>
-              <p>We test apps on Windows 11, macOS 14, iOS 17, and Android 14. We evaluate setup time, interface clarity, kill switch reliability, and protocol switching.</p>
+              <p>We compare documented platform support across Windows, macOS, iOS, and Android, plus features such as split tunnelling and kill switch availability per plan.</p>
             </div>
           </div>
         </div>

@@ -7,7 +7,7 @@ import { getAllPosts } from "@/data/posts";
 export const metadata: Metadata = {
   title: "Best VPN 2026 — Independent Reviews & Comparisons | VPN Adviser",
   description:
-    "Find the best VPN of 2026. We independently test speed, privacy, and streaming performance. Compare NordVPN, ExpressVPN, Surfshark, and more.",
+    "Find the best VPN of 2026. Independent comparisons based on published specifications, third-party security audits, and public benchmark data. Compare NordVPN, ExpressVPN, Surfshark, and more.",
 };
 
 export default function HomePage() {
@@ -20,13 +20,13 @@ export default function HomePage() {
       <section className="bg-gradient-to-br from-slate-900 to-blue-950 text-white py-20 px-4">
         <div className="mx-auto max-w-3xl text-center">
           <div className="inline-block bg-blue-500/20 border border-blue-400/30 text-blue-300 text-sm font-medium px-4 py-1.5 rounded-full mb-6">
-            Updated May 2026 — Tested by our team
+            Updated 2026 · Independent comparison
           </div>
           <h1 className="text-4xl sm:text-5xl font-bold leading-tight mb-5">
             Find the Best VPN for Your Needs
           </h1>
           <p className="text-lg text-slate-300 mb-8 max-w-xl mx-auto">
-            We independently test every VPN for speed, privacy, and streaming. No sponsored rankings. Just honest advice.
+            We compare every major VPN on speed, privacy, and streaming using published specifications, independent audits, and public benchmark data. No sponsored rankings.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Link
@@ -124,9 +124,9 @@ export default function HomePage() {
           <h2 className="text-2xl font-bold mb-8 text-center">Why Trust VPN Adviser?</h2>
           <div className="grid sm:grid-cols-3 gap-6">
             {[
-              { icon: "🔬", title: "We test everything ourselves", body: "Every VPN is tested for real-world speed, DNS leaks, kill switch reliability, and streaming performance on our own devices." },
-              { icon: "🚫", title: "No paid rankings", body: "Affiliate commissions never influence placement. We rank by performance. If a VPN performs poorly, it goes at the bottom regardless of commission rate." },
-              { icon: "📅", title: "Updated regularly", body: "VPN policies, prices, and performance change. We re-test every VPN in our rankings every three months to keep recommendations current." },
+              { icon: "🔬", title: "Evidence-based comparisons", body: "We compare providers on documented features, published pricing, jurisdiction, and the findings of independent third-party security audits." },
+              { icon: "🚫", title: "No paid rankings", body: "Affiliate commissions never influence placement. If a provider scores poorly on the criteria above, it ranks low regardless of commission rate." },
+              { icon: "📅", title: "Updated regularly", body: "VPN policies, prices, and audit results change. We review our rankings against the latest published information to keep them current." },
             ].map((item) => (
               <div key={item.title} className="text-center px-4">
                 <div className="text-4xl mb-3">{item.icon}</div>

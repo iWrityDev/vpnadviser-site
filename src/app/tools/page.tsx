@@ -3,7 +3,7 @@ import Link from "next/link";
 import { tools } from "@/data/tools";
 
 export const metadata: Metadata = {
-  title: "Privacy & Security Tools — Tested by Our Team",
+  title: "Privacy & Security Tools",
   description:
     "A VPN protects your connection, but it doesn't stop malware, data brokers, or weak passwords. These tools fill those gaps. Reviewed and rated by our team.",
 };
@@ -13,7 +13,7 @@ export default function ToolsPage() {
     <div className="mx-auto max-w-6xl px-4 py-12">
       <div className="mb-10">
         <h1 className="text-3xl font-bold mb-3">
-          Privacy &amp; Security Tools — Tested by Our Team
+          Privacy &amp; Security Tools
         </h1>
         <p className="text-slate-600 max-w-2xl leading-relaxed">
           A VPN protects your network connection, but it does not stop malware from infecting your

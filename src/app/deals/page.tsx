@@ -15,7 +15,7 @@ export default function DealsPage() {
         <div className="text-blue-600 text-sm font-semibold uppercase tracking-wide mb-2">May 2026</div>
         <h1 className="text-3xl font-bold mb-3">VPN Deals &amp; Coupon Codes</h1>
         <p className="text-slate-600 max-w-2xl leading-relaxed">
-          Every deal on this page has been tested by our team. Most VPN discounts apply automatically
+          Every deal on this page is checked against the provider's current published pricing. Most VPN discounts apply automatically
           through our links — no code needed. Where a coupon code exists, we list it. All prices
           include the 2-year rate unless noted.
         </p>

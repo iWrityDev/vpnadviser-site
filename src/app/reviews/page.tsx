@@ -4,14 +4,14 @@ import { vpns } from "@/data/vpns";
 
 export const metadata: Metadata = {
   title: "VPN Reviews 2026 — Expert Tested & Rated",
-  description: "In-depth VPN reviews covering speed, privacy, streaming, and pricing. We test every VPN ourselves.",
+  description: "In-depth VPN comparisons covering performance, privacy, streaming, and pricing, based on published specifications and independent audits.",
 };
 
 export default function ReviewsPage() {
   return (
     <div className="mx-auto max-w-5xl px-4 py-12">
       <h1 className="text-3xl font-bold mb-3">VPN Reviews 2026</h1>
-      <p className="text-slate-600 mb-10">Every VPN below is tested by our team for speed, privacy, streaming performance, and value. Updated May 2026.</p>
+      <p className="text-slate-600 mb-10">Every VPN below is compared on performance, privacy, streaming support, and value, using published specifications and independent third-party audits.</p>
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {vpns.map((vpn) => (
           <Link

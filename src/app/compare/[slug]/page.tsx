@@ -124,7 +124,7 @@ export default async function ComparePage({ params }: { params: Promise<{ slug: 
 
       <h1 className="text-3xl font-bold mb-3">{a.name} vs {b.name} (2026)</h1>
       <p className="text-slate-600 mb-10">
-        We test both VPNs across speed, privacy, streaming, and pricing so you can pick the right one without guessing.
+        We compare both VPNs across performance, privacy, streaming, and pricing so you can pick the right one without guessing.
       </p>
 
       {/* Side-by-side summary */}

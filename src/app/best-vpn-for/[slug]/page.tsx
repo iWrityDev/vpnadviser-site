@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!uc) return {};
   return {
     title: `${uc.title} 2026 — Expert Tested`,
-    description: `${uc.description}. We tested every major VPN and found the best option.`,
+    description: `${uc.description}. Compared using published specifications and independent audits.`,
   };
 }
 

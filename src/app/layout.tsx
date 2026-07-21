@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     template: "%s | VPN Adviser",
   },
   description:
-    "Unbiased VPN reviews, side-by-side comparisons, and expert guides to help you choose the right VPN in 2026. Tested for speed, privacy, and streaming.",
+    "Unbiased VPN comparisons, side-by-side breakdowns, and guides to help you choose the right VPN in 2026. Based on published specifications, independent audits, and public benchmark data.",
   keywords: ["best VPN", "VPN review", "VPN comparison", "VPN for Netflix", "VPN 2026"],
   openGraph: {
     type: "website",
@@ -110,8 +110,9 @@ function SiteFooter() {
           <div>
             <div className="font-bold text-slate-900 mb-3">🛡️ VPN Adviser</div>
             <p className="leading-relaxed">
-              Independent VPN reviews, comparisons, and guides since 2013.
-              We test every VPN ourselves — no sponsored rankings.
+              Independent VPN comparisons and guides. We analyse published
+              specifications, independent security audits, and public benchmark
+              data. No sponsored rankings.
             </p>
           </div>
           <div>
