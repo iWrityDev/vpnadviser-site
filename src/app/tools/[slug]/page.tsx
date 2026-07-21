@@ -63,7 +63,7 @@ export default async function ToolPage({
       worstRating: "1",
     },
     author: { "@type": "Organization", name: "VPN Adviser" },
-    publisher: { "@type": "Organization", name: "VPN Adviser", url: "https://vpnadviser.com" },
+    publisher: { "@type": "Organization", name: "VPN Adviser", url: "https://www.vpnadviser.com" },
     name: `${tool.name} Review 2026`,
     reviewBody: tool.description,
   };
@@ -72,9 +72,9 @@ export default async function ToolPage({
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: "https://vpnadviser.com" },
-      { "@type": "ListItem", position: 2, name: "Tools", item: "https://vpnadviser.com/tools" },
-      { "@type": "ListItem", position: 3, name: `${tool.name} Review`, item: `https://vpnadviser.com/tools/${tool.slug}` },
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://www.vpnadviser.com" },
+      { "@type": "ListItem", position: 2, name: "Tools", item: "https://www.vpnadviser.com/tools" },
+      { "@type": "ListItem", position: 3, name: `${tool.name} Review`, item: `https://www.vpnadviser.com/tools/${tool.slug}` },
     ],
   };
 

@@ -63,7 +63,7 @@ export default async function ReviewPage({ params }: { params: Promise<{ slug: s
       worstRating: "1",
     },
     author: { "@type": "Organization", name: "VPN Adviser" },
-    publisher: { "@type": "Organization", name: "VPN Adviser", url: "https://vpnadviser.com" },
+    publisher: { "@type": "Organization", name: "VPN Adviser", url: "https://www.vpnadviser.com" },
     name: `${vpn.name} Review 2026`,
     reviewBody: vpn.description,
   };
@@ -72,9 +72,9 @@ export default async function ReviewPage({ params }: { params: Promise<{ slug: s
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: "https://vpnadviser.com" },
-      { "@type": "ListItem", position: 2, name: "Reviews", item: "https://vpnadviser.com/reviews" },
-      { "@type": "ListItem", position: 3, name: `${vpn.name} Review`, item: `https://vpnadviser.com/reviews/${vpn.slug}` },
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://www.vpnadviser.com" },
+      { "@type": "ListItem", position: 2, name: "Reviews", item: "https://www.vpnadviser.com/reviews" },
+      { "@type": "ListItem", position: 3, name: `${vpn.name} Review`, item: `https://www.vpnadviser.com/reviews/${vpn.slug}` },
     ],
   };
 

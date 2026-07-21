@@ -1,4 +1,4 @@
-﻿{
+{
     "slug":  "vpn-ip-address-leak-prevention-guide",
     "title":  "VPN IP Address Leak Prevention: How to Know Your VPN Is Actually Working",
     "description":  "A VPN that leaks your real IP address offers no protection. Here is how to test for IP leaks, DNS leaks, and WebRTC leaks, and what to do when you find one.",

@@ -6,7 +6,7 @@ import { getAllPosts } from "@/data/posts";
 import { tools } from "@/data/tools";
 import { deals } from "@/data/deals";
 
-const BASE = "https://vpnadviser.com";
+const BASE = "https://www.vpnadviser.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages = [
@@ -57,12 +57,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.85,
   }));
 
-  const blogPages = getAllPosts().map((p) => ({
-    url: `${BASE}/blog/${p.slug}`,
-    lastModified: new Date(p.date),
-    changeFrequency: "monthly" as const,
-    priority: 0.7,
-  }));
+  const blogPages = getAllPosts().map((p) => {
+    const parsed = new Date(p.date);
+    return {
+      url: `${BASE}/blog/${p.slug}`,
+      // Guard: an unparseable date here throws RangeError and fails the entire build.
+      lastModified: isNaN(parsed.getTime()) ? new Date() : parsed,
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    };
+  });
 
   const toolPages = tools.map((t) => ({
     url: `${BASE}/tools/${t.slug}`,

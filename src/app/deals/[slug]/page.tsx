@@ -29,9 +29,9 @@ export default async function DealPage({ params }: { params: Promise<{ slug: str
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: "https://vpnadviser.com" },
-      { "@type": "ListItem", position: 2, name: "VPN Deals", item: "https://vpnadviser.com/deals" },
-      { "@type": "ListItem", position: 3, name: `${deal.vpnName} Coupon`, item: `https://vpnadviser.com/deals/${deal.slug}` },
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://www.vpnadviser.com" },
+      { "@type": "ListItem", position: 2, name: "VPN Deals", item: "https://www.vpnadviser.com/deals" },
+      { "@type": "ListItem", position: 3, name: `${deal.vpnName} Coupon`, item: `https://www.vpnadviser.com/deals/${deal.slug}` },
     ],
   };
 

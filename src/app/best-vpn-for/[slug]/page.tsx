@@ -48,9 +48,9 @@ export default async function UseCasePage({ params }: { params: Promise<{ slug: 
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: "https://vpnadviser.com" },
-      { "@type": "ListItem", position: 2, name: "Best VPN For", item: "https://vpnadviser.com/best-vpn-for" },
-      { "@type": "ListItem", position: 3, name: uc.title, item: `https://vpnadviser.com/best-vpn-for/${uc.slug}` },
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://www.vpnadviser.com" },
+      { "@type": "ListItem", position: 2, name: "Best VPN For", item: "https://www.vpnadviser.com/best-vpn-for" },
+      { "@type": "ListItem", position: 3, name: uc.title, item: `https://www.vpnadviser.com/best-vpn-for/${uc.slug}` },
     ],
   };
 

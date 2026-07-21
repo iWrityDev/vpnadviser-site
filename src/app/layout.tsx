@@ -11,7 +11,10 @@ import "./globals.css";
 const inter = Inter({ variable: "--font-inter", subsets: ["latin"], display: "swap" });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://vpnadviser.com"),
+  metadataBase: new URL("https://www.vpnadviser.com"),
+  alternates: {
+    canonical: "./",
+  },
   title: {
     default: "VPN Adviser — Independent VPN Reviews & Comparisons 2026",
     template: "%s | VPN Adviser",
@@ -34,11 +37,11 @@ const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   name: "VPN Adviser",
-  url: "https://vpnadviser.com",
+  url: "https://www.vpnadviser.com",
   description: "Independent VPN reviews, comparisons, and guides",
   potentialAction: {
     "@type": "SearchAction",
-    target: "https://vpnadviser.com/blog?q={search_term_string}",
+    target: "https://www.vpnadviser.com/blog?q={search_term_string}",
     "query-input": "required name=search_term_string",
   },
 };

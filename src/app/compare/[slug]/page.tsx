@@ -90,9 +90,9 @@ export default async function ComparePage({ params }: { params: Promise<{ slug: 
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: "https://vpnadviser.com" },
-      { "@type": "ListItem", position: 2, name: "Compare", item: "https://vpnadviser.com/compare" },
-      { "@type": "ListItem", position: 3, name: `${a.name} vs ${b.name}`, item: `https://vpnadviser.com/compare/${slug}` },
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://www.vpnadviser.com" },
+      { "@type": "ListItem", position: 2, name: "Compare", item: "https://www.vpnadviser.com/compare" },
+      { "@type": "ListItem", position: 3, name: `${a.name} vs ${b.name}`, item: `https://www.vpnadviser.com/compare/${slug}` },
     ],
   };
 
