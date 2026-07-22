@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { countries } from "@/data/countries";
+import { PRIORITY_COUNTRIES } from "@/data/priority";
 
 export const metadata: Metadata = {
   title: "Best VPN by Country 2026 — Every Country Covered",
@@ -27,7 +28,7 @@ const censorshipColor: Record<string, string> = {
 };
 
 export default function VpnForPage() {
-  const grouped = groupByRegion(countries);
+  const grouped = groupByRegion(countries.filter((c) => PRIORITY_COUNTRIES.includes(c.slug)));
 
   return (
     <div className="mx-auto max-w-5xl px-4 py-12">

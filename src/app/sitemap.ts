@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { vpns } from "@/data/vpns";
 import { useCases } from "@/data/usecases";
 import { countries } from "@/data/countries";
+import { TOP_MATCHUPS, PRIORITY_COUNTRIES } from "@/data/priority";
 import { getAllPosts } from "@/data/posts";
 import { tools } from "@/data/tools";
 import { deals } from "@/data/deals";
@@ -31,17 +32,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.9,
   }));
 
-  const comparePages: MetadataRoute.Sitemap = [];
-  for (let i = 0; i < vpns.length; i++) {
-    for (let j = i + 1; j < vpns.length; j++) {
-      comparePages.push({
-        url: `${BASE}/compare/${vpns[i].slug}-vs-${vpns[j].slug}`,
-        lastModified: new Date(),
-        changeFrequency: "monthly",
-        priority: 0.8,
-      });
-    }
-  }
+  const comparePages: MetadataRoute.Sitemap = TOP_MATCHUPS.map((slug) => ({
+    url: `${BASE}/compare/${slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.8,
+  }));
 
   const useCasePages = useCases.map((uc) => ({
     url: `${BASE}/best-vpn-for/${uc.slug}`,
@@ -50,7 +46,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  const countryPages = countries.map((c) => ({
+  const countryPages = countries.filter((c) => PRIORITY_COUNTRIES.includes(c.slug)).map((c) => ({
     url: `${BASE}/vpn-for/${c.slug}`,
     lastModified: new Date(),
     changeFrequency: "monthly" as const,

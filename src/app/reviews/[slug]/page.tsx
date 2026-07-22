@@ -126,7 +126,7 @@ export default async function ReviewPage({ params }: { params: Promise<{ slug: s
           <a
             href={vpn.affiliateUrl}
             target="_blank"
-            rel="noopener noreferrer nofollow"
+            rel="noopener noreferrer nofollow sponsored"
             className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded-xl transition-colors text-sm"
           >
             Get {vpn.name} →
@@ -223,7 +223,7 @@ export default async function ReviewPage({ params }: { params: Promise<{ slug: s
         <a
           href={vpn.affiliateUrl}
           target="_blank"
-          rel="noopener noreferrer nofollow"
+          rel="noopener noreferrer nofollow sponsored"
           className="inline-block bg-white text-blue-700 font-bold px-8 py-3 rounded-xl hover:bg-blue-50 transition-colors"
         >
           Get {vpn.name} — {vpn.price}

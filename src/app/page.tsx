@@ -49,7 +49,7 @@ export default function HomePage() {
       <section id="top-picks" className="py-14 px-4">
         <div className="mx-auto max-w-5xl">
           <h2 className="text-2xl font-bold mb-2">Best VPNs of 2026</h2>
-          <p className="text-slate-600 mb-8">Ranked by our independent testing across speed, privacy, streaming, and value.</p>
+          <p className="text-slate-600 mb-8">Ranked on documented features, published pricing, jurisdiction, and independent audit findings.</p>
 
           <div className="space-y-4">
             {topVpns.map((vpn, i) => (
@@ -79,7 +79,7 @@ export default function HomePage() {
                   <a
                     href={vpn.affiliateUrl}
                     target="_blank"
-                    rel="noopener noreferrer nofollow"
+                    rel="noopener noreferrer nofollow sponsored"
                     className="bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold px-5 py-2 rounded-xl transition-colors whitespace-nowrap"
                   >
                     Get Deal

@@ -66,7 +66,7 @@ export default function DealsPage() {
               <a
                 href={deal.affiliateUrl}
                 target="_blank"
-                rel="noopener noreferrer nofollow"
+                rel="noopener noreferrer nofollow sponsored"
                 className="block text-center bg-green-600 hover:bg-green-700 text-white font-bold px-6 py-3 rounded-xl transition-colors text-sm whitespace-nowrap"
               >
                 Claim Deal →

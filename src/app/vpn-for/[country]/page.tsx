@@ -3,9 +3,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { countries, getCountry } from "@/data/countries";
 import { getVPN } from "@/data/vpns";
+import { PRIORITY_COUNTRIES } from "@/data/priority";
+
+// Only markets with real VPN demand. Others 404 instead of adding thin template pages.
+export const dynamicParams = false;
 
 export async function generateStaticParams() {
-  return countries.map((c) => ({ country: c.slug }));
+  return PRIORITY_COUNTRIES.map((country) => ({ country }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ country: string }> }): Promise<Metadata> {
@@ -35,7 +39,15 @@ export default async function CountryPage({ params }: { params: Promise<{ countr
   const runnerUp = getVPN(country.runnerUp);
   const census = censorshipLabel[country.censorship];
 
-  const nearby = countries.filter((c) => c.region === country.region && c.slug !== country.slug).slice(0, 4);
+  // Only link to countries we still generate, otherwise these point at 404s.
+  const nearby = countries
+    .filter(
+      (c) =>
+        c.region === country.region &&
+        c.slug !== country.slug &&
+        PRIORITY_COUNTRIES.includes(c.slug)
+    )
+    .slice(0, 4);
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-12">
@@ -93,7 +105,7 @@ export default async function CountryPage({ params }: { params: Promise<{ countr
               <a
                 href={topVpn.affiliateUrl}
                 target="_blank"
-                rel="noopener noreferrer nofollow"
+                rel="noopener noreferrer nofollow sponsored"
                 className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2.5 rounded-xl transition-colors text-sm text-center"
               >
                 Get {topVpn.name}
@@ -118,7 +130,7 @@ export default async function CountryPage({ params }: { params: Promise<{ countr
             <a
               href={runnerUp.affiliateUrl}
               target="_blank"
-              rel="noopener noreferrer nofollow"
+              rel="noopener noreferrer nofollow sponsored"
               className="border border-blue-600 text-blue-600 hover:bg-blue-50 font-semibold px-5 py-2 rounded-xl transition-colors text-sm text-center"
             >
               Get {runnerUp.name}
@@ -176,7 +188,7 @@ export default async function CountryPage({ params }: { params: Promise<{ countr
           <a
             href={topVpn.affiliateUrl}
             target="_blank"
-            rel="noopener noreferrer nofollow"
+            rel="noopener noreferrer nofollow sponsored"
             className="inline-block bg-white text-blue-700 font-bold px-8 py-3 rounded-xl hover:bg-blue-50 transition-colors"
           >
             Get {topVpn.name} — {topVpn.price}

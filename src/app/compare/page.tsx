@@ -1,20 +1,18 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { vpns } from "@/data/vpns";
+import { getVPN } from "@/data/vpns";
+import { TOP_MATCHUPS } from "@/data/priority";
 
 export const metadata: Metadata = {
-  title: "VPN Comparisons 2026 — Side-by-Side VPN Tests",
+  title: "VPN Comparisons 2026 — Side-by-Side VPN Comparisons",
   description: "Compare the top VPNs side by side. Speed, price, privacy, and features all in one place.",
 };
 
 function getComparisons() {
-  const pairs = [];
-  for (let i = 0; i < vpns.length; i++) {
-    for (let j = i + 1; j < vpns.length; j++) {
-      pairs.push({ a: vpns[i], b: vpns[j] });
-    }
-  }
-  return pairs;
+  return TOP_MATCHUPS.map((slug) => {
+    const [aSlug, bSlug] = slug.split("-vs-");
+    return { a: getVPN(aSlug), b: getVPN(bSlug) };
+  }).filter((p): p is { a: NonNullable<typeof p.a>; b: NonNullable<typeof p.b> } => Boolean(p.a && p.b));
 }
 
 export default function ComparePage() {

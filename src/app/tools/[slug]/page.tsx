@@ -35,7 +35,7 @@ export default async function ToolPage({
   const faqs = [
     {
       question: `Is ${tool.name} worth it?`,
-      answer: `${tool.name} scores ${tool.rating}/5 in our testing. ${tool.tagline}. For most users looking for ${tool.bestFor[0].replace(/-/g, " ")}, it delivers solid value.`,
+      answer: `${tool.name} scores ${tool.rating}/5 on our published-criteria assessment. ${tool.tagline}. For most users looking for ${tool.bestFor[0].replace(/-/g, " ")}, it delivers solid value.`,
     },
     {
       question: `What does ${tool.name} cost?`,
@@ -137,7 +137,7 @@ export default async function ToolPage({
           <a
             href={tool.affiliateUrl}
             target="_blank"
-            rel="noopener noreferrer nofollow"
+            rel="noopener noreferrer nofollow sponsored"
             className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded-xl transition-colors text-sm"
           >
             Get {tool.name} →
@@ -219,7 +219,7 @@ export default async function ToolPage({
         <a
           href={tool.affiliateUrl}
           target="_blank"
-          rel="noopener noreferrer nofollow"
+          rel="noopener noreferrer nofollow sponsored"
           className="inline-block bg-white text-blue-700 font-bold px-8 py-3 rounded-xl hover:bg-blue-50 transition-colors"
         >
           Get {tool.name} — {tool.price}

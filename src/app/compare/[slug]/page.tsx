@@ -2,15 +2,14 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { vpns, getVPN } from "@/data/vpns";
+import { TOP_MATCHUPS } from "@/data/priority";
+
+// Only the matchups people actually search for. Anything else 404s rather than
+// generating a near-duplicate template page.
+export const dynamicParams = false;
 
 export async function generateStaticParams() {
-  const pairs = [];
-  for (let i = 0; i < vpns.length; i++) {
-    for (let j = i + 1; j < vpns.length; j++) {
-      pairs.push({ slug: `${vpns[i].slug}-vs-${vpns[j].slug}` });
-    }
-  }
-  return pairs;
+  return TOP_MATCHUPS.map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
@@ -146,7 +145,7 @@ export default async function ComparePage({ params }: { params: Promise<{ slug: 
             <a
               href={vpn.affiliateUrl}
               target="_blank"
-              rel="noopener noreferrer nofollow"
+              rel="noopener noreferrer nofollow sponsored"
               className="block text-center bg-blue-600 hover:bg-blue-700 text-white font-semibold px-5 py-2.5 rounded-xl transition-colors text-sm"
             >
               Get {vpn.name}

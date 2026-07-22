@@ -128,7 +128,7 @@ export default async function DealPage({ params }: { params: Promise<{ slug: str
             <a
               href={deal.affiliateUrl}
               target="_blank"
-              rel="noopener noreferrer nofollow"
+              rel="noopener noreferrer nofollow sponsored"
               className="sm:min-w-[180px] text-center bg-green-600 hover:bg-green-700 text-white font-bold px-8 py-4 rounded-xl transition-colors text-base whitespace-nowrap"
             >
               Claim {deal.discount} →

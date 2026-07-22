@@ -83,7 +83,7 @@ export default function BestVpnPage() {
           <a
             href="https://go.nordvpn.net/aff_c?offer_id=15&aff_id=147496&url_id=902"
             target="_blank"
-            rel="noopener noreferrer nofollow"
+            rel="noopener noreferrer nofollow sponsored"
             className="shrink-0 bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-3 rounded-xl transition-colors text-sm"
           >
             Get NordVPN — 76% Off →
@@ -125,7 +125,7 @@ export default function BestVpnPage() {
                 <a
                   href={vpn.affiliateUrl}
                   target="_blank"
-                  rel="noopener noreferrer nofollow"
+                  rel="noopener noreferrer nofollow sponsored"
                   className="text-center bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded-xl transition-colors text-sm whitespace-nowrap"
                 >
                   Get Deal
@@ -220,7 +220,7 @@ export default function BestVpnPage() {
             <a
               href="https://go.nordvpn.net/aff_c?offer_id=15&aff_id=147496&url_id=902"
               target="_blank"
-              rel="noopener noreferrer nofollow"
+              rel="noopener noreferrer nofollow sponsored"
               className="bg-white text-blue-700 font-bold px-6 py-3 rounded-xl hover:bg-blue-50 transition-colors text-sm"
             >
               NordVPN — 76% Off

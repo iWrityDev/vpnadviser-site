@@ -104,7 +104,7 @@ export default async function UseCasePage({ params }: { params: Promise<{ slug: 
               <a
                 href={topVpn.affiliateUrl}
                 target="_blank"
-                rel="noopener noreferrer nofollow"
+                rel="noopener noreferrer nofollow sponsored"
                 className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2.5 rounded-xl transition-colors text-sm text-center"
               >
                 Get {topVpn.name}
