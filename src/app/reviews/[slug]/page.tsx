@@ -186,6 +186,34 @@ export default async function ReviewPage({ params }: { params: Promise<{ slug: s
         </div>
       </div>
 
+      {/* Independent audits — verifiable third-party evidence */}
+      {vpn.audits && vpn.audits.length > 0 && (
+        <div className="border border-slate-200 rounded-2xl p-5 mb-10">
+          <h2 className="text-xl font-bold mb-2">Independent audits</h2>
+          <p className="text-sm text-slate-600 mb-4">
+            A no-logs claim is only as good as the evidence behind it. These are
+            the third-party engagements {vpn.name} has published, with the firm
+            and the year, so you can look them up yourself.
+          </p>
+          <ul className="space-y-2">
+            {vpn.audits.map((a) => (
+              <li key={a} className="flex gap-2 text-sm text-slate-700">
+                <span className="text-green-600 shrink-0">✓</span>
+                <span>{a}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {/* Jurisdiction */}
+      {vpn.jurisdiction && (
+        <div className="border border-slate-200 rounded-2xl p-5 mb-10">
+          <h2 className="text-xl font-bold mb-2">Jurisdiction</h2>
+          <p className="text-sm text-slate-700 leading-relaxed">{vpn.jurisdiction}</p>
+        </div>
+      )}
+
       {/* Best For */}
       <div className="mb-10">
         <h2 className="text-xl font-bold mb-3">Best For</h2>

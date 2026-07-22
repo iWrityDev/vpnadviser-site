@@ -19,6 +19,10 @@ export type VPN = {
   };
   bestFor: string[];
   description: string;
+  /** Legal jurisdiction and why it matters for privacy. */
+  jurisdiction?: string;
+  /** Named third-party audits with firm and year. Verifiable claims only. */
+  audits?: string[];
 };
 
 export const vpns: VPN[] = [
@@ -32,27 +36,34 @@ export const vpns: VPN[] = [
     affiliateUrl: "https://go.nordvpn.net/aff_c?offer_id=15&aff_id=147496&url_id=902",
     badge: "Best Overall",
     pros: [
-      "Consistently fast speeds (WireGuard/NordLynx)",
-      "Reliable Netflix and streaming unblocking",
-      "Audited no-logs policy",
-      "10 simultaneous devices",
-      "Threat protection built in",
+      "No-logs policy independently audited five times (PwC, then Deloitte)",
+      "Panama jurisdiction, outside the 14-Eyes alliance and with no mandatory data retention",
+      "NordLynx, an in-house WireGuard implementation, rather than OpenVPN-only",
+      "10 simultaneous connections",
+      "Threat Protection blocks ads and known malware domains without extra software",
     ],
     cons: [
-      "Slightly more expensive than budget picks",
-      "Desktop app can feel heavy",
+      "Headline price requires a multi-year commitment; the monthly rate is far higher",
+      "Renewal price is significantly above the introductory rate",
+      "Desktop app is heavier than minimalist competitors",
     ],
     specs: {
-      servers: "6,400+",
-      countries: "111",
+      servers: "7,400+",
+      countries: "118+",
       devices: "10",
       protocol: "NordLynx (WireGuard)",
-      logs: "No logs (audited)",
+      logs: "No logs (independently audited)",
       moneyBack: "30-day",
     },
+    jurisdiction:
+      "Panama. No mandatory data retention laws and outside the 14-Eyes intelligence-sharing alliance, which is why several privacy-focused providers incorporate there.",
+    audits: [
+      "PricewaterhouseCoopers, no-logs assurance (2018 and 2020)",
+      "Deloitte, no-logs assurance (2022, 2023, 2024, most recent published February 2026)",
+    ],
     bestFor: ["streaming", "privacy", "general-use", "torrenting"],
     description:
-      "NordVPN is the top pick for most users. It consistently unblocks Netflix and major streaming platforms, posts fast speeds on NordLynx, and has an audited no-logs policy. The threat protection feature blocks ads and malware without extra software.",
+      "NordVPN has the strongest documented audit record of any major consumer VPN: five independent no-logs assurance engagements, first by PricewaterhouseCoopers and since 2022 by Deloitte on an annual cycle. It is incorporated in Panama, which has no mandatory data retention regime. Its NordLynx protocol is built on WireGuard, and the plan covers 10 simultaneous connections. The main caveat is commercial rather than technical: the advertised price depends on a multi-year term and rises substantially at renewal.",
   },
   {
     slug: "expressvpn",
@@ -96,27 +107,35 @@ export const vpns: VPN[] = [
     affiliateUrl: "https://www.kqzyfj.com/click-101760415-15438560",
     badge: "Best Value",
     pros: [
-      "Unlimited simultaneous devices",
-      "CleanWeb ad and malware blocker",
-      "Nexus IP rotation for extra privacy",
-      "Good streaming performance",
-      "Cheap long-term pricing",
+      "Unlimited simultaneous connections, the clearest differentiator in the category",
+      "No-logs policy audited by Deloitte in 2023 and again in June 2025 under ISAE 3000",
+      "Infrastructure and the Dausos protocol audited by Cure53 in 2025",
+      "CleanWeb blocks ads and malware domains without a separate extension",
+      "Among the cheapest long-term plans of any audited provider",
     ],
     cons: [
-      "Slower than NordVPN on some servers",
-      "Monthly price is high without a long-term plan",
+      "Incorporated in the Netherlands, a 9-Eyes member, unlike Panama-based or BVI-based rivals",
+      "Dutch law means a valid legal order can compel disclosure of whatever it holds",
+      "Headline price requires a multi-year term and rises sharply at renewal",
     ],
     specs: {
       servers: "3,200+",
       countries: "100",
       devices: "Unlimited",
       protocol: "WireGuard / IKEv2",
-      logs: "No logs (audited)",
+      logs: "No logs (independently audited)",
       moneyBack: "30-day",
     },
+    jurisdiction:
+      "Netherlands. Worth understanding before you buy: the Netherlands is a member of the 9-Eyes intelligence-sharing alliance, and Dutch law allows a valid legal order to compel disclosure of data the company holds. The audited no-logs policy is what limits how much that data amounts to.",
+    audits: [
+      "Deloitte, no-logs assurance under ISAE 3000 (2023 and June 2025)",
+      "Cure53, infrastructure and Dausos protocol review (2025)",
+      "Cure53, browser extension review (2018)",
+    ],
     bestFor: ["budget", "families", "streaming", "beginners"],
     description:
-      "Surfshark is the best value VPN for households. Unlimited device connections make it ideal for families, and the CleanWeb feature handles ads without a separate blocker. Speeds are solid, though NordVPN edges it out in raw performance.",
+      "Surfshark is the value pick, and unlimited simultaneous connections is a genuine differentiator rather than a marketing line: no other major provider allows it without a device cap. Its no-logs policy has been verified twice by Deloitte under ISAE 3000, most recently in June 2025, and Cure53 reviewed its infrastructure in 2025. The trade-off is jurisdictional. Surfshark is incorporated in the Netherlands, a 9-Eyes member, whereas NordVPN sits in Panama. If your threat model is a commercial one (public Wi-Fi, tracking, geo-restrictions) that distinction is largely academic. If it is a legal one, it is the single most important line on this page.",
   },
   {
     slug: "cyberghost",
